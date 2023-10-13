@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cricket Score Controller</title>
+</head>
+<body>
+	<img src="https://m.economictimes.com/thumb/msid-70499861,width-1200,height-900,resizemode-4,imgsize-382417/bcci.jpg" height=50px></img>
+
+    <h1>BCCI</h1>
+    <h3>Controller Page:</h3>
+	
+	<input type="text" id="batsman1" placeholder="Batsman 1"/>
+	<input type="text" id="batsman2" placeholder="Batsman 2"/>
+	
+	<button id="Btn-6">Sixer6️⃣</button>
+	<button id="Btn-4">Four4️⃣</button>
+	<button id="Btn-1">One1️⃣</button>
+	<button id="Btn-2">Two2️⃣</button><br><br><br>
+	<h3>Commentary Box:</h3>
+	<textarea id="commentary" rows="8" cols="40" placeholder="Dictate commentary by pressing 'win+H'"></textarea>
+
+	
+</body>
+<script src="/socket.io/socket.io.js"></script>
+<script>
+const socket=io();
+
+// getting buttons for events like sixer, four etc.
+const Btn6=document.getElementById("Btn-6");
+const Btn4=document.getElementById("Btn-4");
+const Btn1=document.getElementById("Btn-1");
+const Btn2=document.getElementById("Btn-2");
+
+
+// getting both batsmans names
+const batsman1=document.getElementById("batsman1");
+const batsman2=document.getElementById("batsman2");
+const commentary=document.getElementById("commentary");
+
+//const allmessages=document.getElementById('messages');
+
+
+
+// events
+Btn6.addEventListener('click',e=>{
+const batter1=batsman1.value;
+const batter2=batsman2.value;
+const comm=commentary.value;
+var a=6;
+console.log(batter1);
+console.log(batter2);
+
+socket.emit("match-event1",batter1);
+socket.emit("match-event2",batter2);
+socket.emit("match-event3",a);
+socket.emit("match-event4",comm);
+});
+
+Btn4.addEventListener('click',e=>{
+const batter1=batsman1.value;
+const batter2=batsman2.value;
+const comm=commentary.value;
+var a=4;
+console.log(batter1);
+console.log(batter2);
+
+socket.emit("match-event1",batter1);
+socket.emit("match-event2",batter2);
+socket.emit("match-event3",a);
+socket.emit("match-event4",comm);
+});
+
+
+Btn1.addEventListener('click',e=>{
+const batter1=batsman1.value;
+const batter2=batsman2.value;
+const comm=commentary.value;
+var a=1;
+console.log(batter1);
+console.log(batter2);
+
+socket.emit("match-event1",batter1);
+socket.emit("match-event2",batter2);
+socket.emit("match-event3",a);
+socket.emit("match-event4",comm);
+});
+
+Btn2.addEventListener('click',e=>{
+const batter1=batsman1.value;
+const batter2=batsman2.value;
+const comm=commentary.value;
+var a=2;
+console.log(batter1);
+console.log(batter2);
+
+socket.emit("match-event1",batter1);
+socket.emit("match-event2",batter2);
+socket.emit("match-event3",a);
+socket.emit("match-event4",comm);
+});
+
+</script>
+
+</html>

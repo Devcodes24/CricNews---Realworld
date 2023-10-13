@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head><title>Cricuzz.com</title></head>
+<body >
+
+<h1 style="background-color:#009270;color:white">CRICUZZ</h1>
+<h3>Live score</h3>
+<h2>India vs Pakistan, 9th Match - Live Cricket Score, Commentary</h2>
+<span class="text-bold">Series: </span><br>
+
+<a href="/cricket-series/6732/icc-cricket-world-cup-2023" title="ICC Cricket World Cup 2023"><span style="color:gray">ICC Cricket World Cup 2023</span></a>
+<span>Venue: </span>
+<span>Arun Jaitley Stadium,&nbsp;</span>
+
+
+
+<br><br><h3>Batsmans🏏</h3>
+<h4 id="messages"></h4>
+<h4 id="messages-2"></h4>
+<h3 >Total score:</h3>
+<h4 id="messages3"></h4><br><hr>
+
+
+<h2>Commentary:</h2>
+<div id="commentary1"></div>
+<h4>Players-India</h4>
+<div>Rohit Sharma (c), Ishan Kishan, Virat Kohli, Shreyas Iyer, KL Rahul (wk), Hardik Pandya, Ravindra Jadeja, Shardul Thakur, Kuldeep Yadav, Jasprit Bumrah, Mohammed Siraj</div>
+<h4>Players-Pakistan</h4>
+<div>Rahmanullah Gurbaz (wk), Ibrahim Zadran, Rahmat Shah, Hashmatullah Shahidi (c), Najibullah Zadran, Mohammad Nabi, Azmatullah Omarzai, Rashid Khan, Mujeeb Ur Rahman, Naveen-ul-Haq, Fazalhaq Farooqi</div>
+
+</body>
+
+<script src="/socket.io/socket.io.js"></script>
+
+<script>
+
+const socket=io();
+const allmessages1=document.getElementById("messages");
+const allmessages2=document.getElementById("messages-2");
+const allmessages3=document.getElementById("messages3");
+const allmessages4=document.getElementById("commentary1");
+var b=0;
+
+// recieving from server
+
+
+
+socket.on('message1',(message1)=>{
+//console.log(message);
+allmessages1.innerText=message1;
+});
+
+socket.on('message2',(message2)=>{
+//console.log(message2);
+
+allmessages2.innerText=message2;
+});
+socket.on('message3',(message3)=>{
+
+console.log(message3);
+console.log(b);
+b=b+message3;
+allmessages3.innerText=b;
+});
+socket.on('message4',(message4)=>{
+const p=document.createElement('p');
+p.innerText=message4;
+allmessages4.appendChild(p);
+
+});
+
+
+
+
+
+
+
+</script>
+</html>
